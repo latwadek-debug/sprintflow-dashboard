@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SprintFlow Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="brand">
+        <i class="ph-fill ph-circles-three-plus brand-icon"></i>
+        <span>SprintFlow</span>
+      </div>
+      <nav class="nav-menu">
+        <a href="#" class="nav-item active"><i class="ph ph-squares-four"></i> Dashboard</a>
+        <a href="#" class="nav-item"><i class="ph ph-kanban"></i> Projects</a>
+        <a href="#" class="nav-item"><i class="ph ph-users"></i> Team</a>
+        <a href="#" class="nav-item"><i class="ph ph-chart-bar"></i> Analytics</a>
+      </nav>
+      <div class="user-profile">
+        <img src="https://i.pravatar.cc/150?img=15" alt="Profile">
+        <div class="user-info">
+          <p class="name">Kiran Dev</p>
+          <p class="role">Admin</p>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-bar">
+        <div class="breadcrumbs">
+          <span>Workspace</span> › <span class="current">Q4 Development</span>
+        </div>
+        <button class="btn-primary" onclick="app.openModal()"><i class="ph-bold ph-plus"></i> New Task</button>
+      </header>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-head">
+            <span class="stat-title">Total Tasks</span>
+            <i class="ph ph-stack stat-icon blue"></i>
+          </div>
+          <h2 id="total-tasks">0</h2>
+        </div>
+        <div class="stat-card">
+          <div class="stat-head">
+            <span class="stat-title">In Progress</span>
+            <i class="ph ph-spinner stat-icon orange"></i>
+          </div>
+          <h2 id="pending-tasks">0</h2>
+        </div>
+        <div class="stat-card">
+          <div class="stat-head">
+            <span class="stat-title">Completed</span>
+            <i class="ph ph-check-circle stat-icon green"></i>
+          </div>
+          <h2 id="completed-tasks">0</h2>
+        </div>
+      </div>
+
+      <div class="kanban-board">
+        <div class="kanban-column" id="col-todo">
+          <div class="col-header">
+            <span class="col-title">To Do</span>
+            <span class="col-count" id="count-todo">0</span>
+          </div>
+          <div class="task-list" id="list-todo"></div>
+        </div>
+
+        <div class="kanban-column" id="col-progress">
+          <div class="col-header">
+            <span class="col-title">In Progress</span>
+            <span class="col-count" id="count-progress">0</span>
+          </div>
+          <div class="task-list" id="list-progress"></div>
+        </div>
+
+        <div class="kanban-column" id="col-done">
+          <div class="col-header">
+            <span class="col-title">Done</span>
+            <span class="col-count" id="count-done">0</span>
+          </div>
+          <div class="task-list" id="list-done"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="taskModal">
+    <div class="modal">
+      <h3>Add New Task</h3>
+      <form onsubmit="app.addTask(event)">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" id="taskTitle" required placeholder="e.g. Fix Login Bug">
+        </div>
+        <div class="form-group">
+          <label>Tag</label>
+          <select id="taskTag">
+            <option value="Design">Design</option>
+            <option value="Dev">Development</option>
+            <option value="Backend">Backend</option>
+          </select>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn-text" onclick="app.closeModal()">Cancel</button>
+          <button type="submit" class="btn-primary">Create Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
